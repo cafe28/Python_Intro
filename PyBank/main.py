@@ -5,13 +5,13 @@ import csv
 # Path to collect data from the Resources folder
 budget_data = os.path.join("PyBank", "Resources", "budget_data.csv")
 
-#open the csv file
+# open the csv file
 with open(budget_data, "r") as csvfile:
     csvreader = csv.reader(csvfile, delimiter=",")
 
     # print all csv document
     header = next(csvreader)
-      
+
     # The variables
     count_total_months = 0
     count_totalprofit_losses = 0
@@ -24,7 +24,7 @@ with open(budget_data, "r") as csvfile:
 
     # total amount of months
     for row in csvreader:
-        count_total_months += 1 #starts at 0
+        count_total_months += 1  # starts at 0
 
         # total profit losses
         count_totalprofit_losses += int(row[1])
@@ -54,8 +54,8 @@ with open(budget_data, "r") as csvfile:
     result.append(f"Total Months: {count_total_months}")
     result.append(f"Total: ${count_totalprofit_losses}")
     result.append(f"Average Change: ${avg_change_profit_losses}")
-    result.append(f"Greatest Increase in Profits: {greatest_increase["date"]} (${greatest_increase["amount"]})")
-    result.append(f"Greatest Decrease in Losses: {greatest_decrease["date"]} (${greatest_decrease["amount"]})")
+    result.append(f'Greatest Increase in Profits: {greatest_increase["date"]} (${greatest_increase["amount"]})')
+    result.append(f'Greatest Decrease in Losses: {greatest_decrease["date"]} (${greatest_decrease["amount"]})')
 
     # output to a text file
     output_file = os.path.join("PyBank", "Analysis", "financial_analysis.txt")
